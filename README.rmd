@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# APP transcriptomic manuscript
+
+## Background
+This repository contains all the scripts used to in the APP manuscript post transcript calling. 
+
+### Processing of long-read data
+We have previosly developed two `snakemake` pipelines for automated Analysis of Iso-Seq data which we have used here:
+
+
+[APTARS (Analysis of PacBio TARgeted Sequencing](https://github.com/sid-sethi/APTARS): This pipeline processes all the raw sequencing data, does the alignment to a reference genome and collapses reads into unique transcripts. It also annotates transcripts with information such as open reading frame (ORF) predictions and characterises transcript by comparing if they are full splice matches to transcripts in annotation. 
+
+
+[PSQAN (Post Sqanti QC Analysis](https://github.com/sid-sethi/PSQAN): This pipeline applies a set of QC and filtering criteria to remove potential genomic contamination and rare PCR artifacts. Using [`SQANTI3`](https://github.com/ConesaLab/SQANTI3) output of ORF prediction, NMD prediction and structural categorisation based on comparison with the reference annotation, we grouped the identified isoforms into the following categories:
+
+
+1.  __Non-coding novel__ – if predicted to be non-coding and not a full-splice match with the reference
+2.  __Non-coding known__ – if predicted to be non-coding and a full-splice match with the reference
+3.  __NMD novel__ – if predicted to be coding & NMD, and not a full-splice match with the reference
+4.  __NMD known__ – if predicted to be coding & NMD, and a full-splice match with the reference
+5.  __Coding novel__ – if predicted to be coding & not NMD, and not a full-splice match with the reference
+6.  __Coding known (complete match)__ – if predicted to be coding & not NMD, and a full-splice & UTR match with the reference
+7.  __Coding known (alternate 3’/5’ end)__ – if predicted to be coding & not NMD, and a full-splice match with the reference but with an alternate 3’ end, 5’ end or both 3’ and 5’ end.
+
+
+
+## Code contents
+
+Within this repository you will find:
+
+| Directory | Description |
+| --------- | --------------------------------------------------------------------------- |
+| [docs](docs) | Contains all `.Rmd`s and their corresponding `.html`s describing analyses performed for this project. |
+| [logs](logs) | For any scripts that were run outside of an `.Rmd` (e.g. scripts from the [scripts](scripts) directory), a log file was recorded and can be accessed here. |
+| [raw_data](raw_data)| Data used for the analysis. Most will not be available due to size. |
+| [results](results) | Results from all analyses. |
+| [scripts](scripts) | Contains analysis scripts. Each script contains a one-line description and is also referenced in its corresponding `.Rmd`. |
