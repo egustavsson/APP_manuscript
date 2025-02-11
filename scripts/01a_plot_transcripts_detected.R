@@ -74,14 +74,15 @@ transcripts_depreciation_curve <-
                       ymin = n_transcripts - sd), 
                   alpha = 0.2, 
                   fill = "blue", group=1) +
+      geom_vline(xintercept = 0.1, linetype = "dashed", color = "darkgrey", size = 0.3) +
       ggtitle(paste0("Depreciation curve of ", gene_name, " transcripts")) +
       scale_x_continuous(name = expression(paste("Normalised expression (", NFLR[T], ")"))) +
       scale_y_continuous(name = "No. of transcripts detected") +
       guides(fill="none") +
-      facet_zoom(xlim = c(0, 5),
-                 ylim = c(0, 50),
+      facet_zoom(xlim = c(0, 3),
+                 ylim = c(0, 100),
                  horizontal = F) +
-      
+      theme_bw() +
       theme(plot.title = element_text(face = "bold",
                                       size = 16,
                                       hjust = 0.5),
@@ -107,12 +108,16 @@ depreciation_curve_plot <-
                                  gene_name = "APP")
 
 # Save data ---------------------------------------------------------------
-  
-ggsave(plot = depreciation_curve_plot,
-       filename = "Depreciation_curve_plot.png", 
-       path = here::here("results"), 
-       width = 6, 
-       height = 4, 
-       dpi = 600
-)
+file_extensions <- c("png", "svg")
+
+for (ext in file_extensions) {
+  ggsave(
+    plot = depreciation_curve_plot,
+    filename = paste0("01a_Depreciation_curve_plot.", ext),
+    path = here::here("results", "plots"),
+    width = 6,
+    height = 4,
+    dpi = 600
+  )
+}
 

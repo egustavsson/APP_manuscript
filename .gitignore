@@ -4,6 +4,5 @@
 .Ruserdata
 *.DS_Store
 raw_data/*
-results/*
 *.Rproj
 .Renviron
