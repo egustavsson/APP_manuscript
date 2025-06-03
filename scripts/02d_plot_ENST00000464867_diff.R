@@ -12,7 +12,7 @@ library(ggforce)
 # Arguments---------------------------------------------------------------
 
 Gene <- "APP"
-MANE_transcript <- "ENST00000346798"
+MANE_transcript <- "ENST00000464867"
 
 # Load data ---------------------------------------------------------------
 
@@ -111,7 +111,7 @@ plot_diff <- function(lr_exons_cds,
       xend = end, 
       y = factor(transcript_id, levels = c("PB.4.251",
                                            "PB.4.557",
-                                           "ENST00000346798"))
+                                           "ENST00000464867"))
     )) + 
     geom_range(
       height = 0.25,
@@ -150,8 +150,7 @@ plot_diff <- function(lr_exons_cds,
         paste0("Not in ", MANE_canonical)
       )
     ) + 
-    facet_zoom(xlim = c(25897000, 25899500)) +
-    ggtitle(label = paste0(Gene, " novel coding transcripts compared to MANE select")) +
+    ggtitle(label = paste0(Gene, " novel coding transcripts compared to ENST00000464867")) +
     theme_bw() + 
     theme(legend.position = "top", plot.title = element_text(size = 18, face = "bold", hjust = 0.5))
   
@@ -185,7 +184,7 @@ lr_mane_diff_plot <-
 
 ggsave(
   plot = lr_mane_diff_plot, 
-  filename = "02c_APP_transcripts_diff_plot.svg", 
+  filename = "02d_APP_ENST00000464867_diff_plot.png", 
   path = here::here("results", "plots"), 
   width = 10, 
   height = 6, 

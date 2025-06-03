@@ -30,38 +30,36 @@ CCDS <- Biostrings::readDNAStringSet(stringr::str_remove(ccds_path, "\\.gz"))
 # Functions ---------------------------------------------------------------
 
 
-annotate_tx_classification <- function(tx, col_W_seqs, CCDS_seqs) {
+annotate_tx_data <- function(tx, col_W_seqs, CCDS_seqs, gff) {
   
-  # Ensure the column name exists in query_seqs
+  # Ensure the column name exists in tx
   if (!col_W_seqs %in% colnames(tx)) {
-    stop("Column name not found in query_seqs")
+    stop("Column name not found in tx")
   }
   
   # Match sequences
   matches <- match(tx[[col_W_seqs]], CCDS_seqs)
   
   # Bind results and get corresponding CCDS names
-  final_df <- tx %>%
+  tx <- tx %>%
     mutate(
       CCDS_id = ifelse(
         !is.na(matches), 
         names(CCDS_seqs)[matches], 
-        paste0(
-          "Novel CDS (", nchar(ORFik_aa), "aa)"
-        )
+        paste0("Novel CDS (", nchar(gsub("[^A-Za-z]", "", ORFik_aa)), "aa)") # this only allows for alpabetical as ORFik adds "*" to reperesent Ter
       )
     )
   
-  return(final_df)
-}
-
-annotate_tx_gff <- function(gff, tx_classification) {
-  
-  # Get transcript and CCDS IDs from the tx_classification file
-  tx_CCDS <- tx_classification %>% dplyr::select(isoform, CCDS_id)
+  # Get transcript and CCDS IDs
+  tx_CCDS <- tx %>% dplyr::select(isoform, CCDS_id)
   
   # Convert gff to a DataFrame to enable manipulation
   gff_df <- as.data.frame(mcols(gff))
+  
+  # Ensure transcript_id column exists before merging
+  if (!"transcript_id" %in% colnames(gff_df)) {
+    stop("Column 'transcript_id' not found in gff metadata")
+  }
   
   # Merge with tx_CCDS to add CCDS_id where transcript_id matches isoform
   gff_df <- gff_df %>% 
@@ -70,14 +68,18 @@ annotate_tx_gff <- function(gff, tx_classification) {
   # Assign the updated metadata back to the GRanges object
   mcols(gff) <- gff_df
   
-  return(gff)
+  return(list(tx_annotated = tx, gff_annotated = gff))
 }
+
 
 # Main --------------------------------------------------------------------
 
-tx_annotated <- annotate_tx_classification(tx = tx_classification,
-                                           col_W_seqs = "ORFik_cds", 
-                                           CCDS_seqs = CCDS)
+tx_data_CCDS <- annotate_tx_data(tx = tx_classification, 
+                                 col_W_seqs = "ORFik_cds", 
+                                 CCDS_seqs = CCDS, 
+                                 gff = tx_gff)
 
-gff_annotated <- annotate_tx_gff(gff = tx_gff, tx_classification = tx_annotated)
+# Save data ---------------------------------------------------------------
+
+
 

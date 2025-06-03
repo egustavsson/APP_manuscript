@@ -17,19 +17,19 @@ plot_abeta <- function(data, split_by, Treatment) {
   
   plot_order <- c("WT", "HET", "KO")
   
-  # Filter data based on the specified Treatment(s)
   filtered_data <- data %>% 
     filter(Treatment %in% !!Treatment)
   
-  # Split the data by the specified column
   data_list <- split(x = filtered_data, f = filtered_data[[split_by]])
   
-  # Create a list to store the plots
   plot_list <- list()
   
-  # Loop through each element in data_list to create a plot
   for (name in names(data_list)) {
     subset_data <- data_list[[name]]
+    
+    # Determine the y-axis limits, excluding extreme outliers
+    y_lower <- quantile(subset_data$Count, 0.05, na.rm = TRUE) # 5th percentile
+    y_upper <- quantile(subset_data$Count, 0.95, na.rm = TRUE) # 95th percentile
     
     plot <- 
       subset_data %>%
@@ -40,16 +40,17 @@ plot_abeta <- function(data, split_by, Treatment) {
                    width = 0.7) +
       geom_point(show.legend = FALSE,
                  na.rm = TRUE,
-                 size = 2, 
-                 alpha = 0.6, 
+                 size = 2,
+                 alpha = 0.6,
                  shape = 21) +
-      facet_grid(Treatment ~ Analyte) +  # Facet by Treatment and Analyte
+      facet_grid(Treatment ~ Analyte, scales = "free_y") +
       labs(
         title = unique(subset_data$Measurement), 
         x = "Genotype",
         y = unique(subset_data$unit)) +
       scale_fill_brewer(palette = "Blues") +
       scale_colour_brewer(palette = "Blues") +
+      coord_cartesian(ylim = c(y_lower, y_upper)) +  # Adjust y-axis limits without cutting off outliers
       theme_bw() +
       theme(
         axis.title = element_text(size = 16),
@@ -60,11 +61,9 @@ plot_abeta <- function(data, split_by, Treatment) {
         panel.grid.minor = element_blank()
       )
     
-    # Store the plot in the list with the name of the subset
     plot_list[[name]] <- plot
   }
   
-  # Return the list of plots
   return(plot_list)
 }
 
@@ -72,7 +71,9 @@ plot_abeta <- function(data, split_by, Treatment) {
 
 # Create plots including multiple treatments
 plots <- plot_abeta(
-  data = MSD_data, split_by = "Measurement", Treatment = c("Untreated", "BSI", "GSI")
+  data = MSD_data, 
+  split_by = "Measurement", 
+  Treatment = c("Untreated")
 )
 
 arranged_plot <- ggpubr::ggarrange(

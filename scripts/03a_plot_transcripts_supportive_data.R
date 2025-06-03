@@ -25,10 +25,7 @@ long_read <- rtracklayer::import(
   here::here("raw_data", "IsoSeq", "APP_corrected.gtf.cds.gff")) %>% 
   plyranges::filter(transcript_id %in% c(
     "PB.4.557",
-    "PB.4.251", 
-    "PB.4.998", 
-    "PB.4.510",
-    "PB.4.188"
+    "PB.4.251"
   ))
 
 
@@ -84,10 +81,8 @@ plot_suppotive_data_per_gene <-
       exons %>%
       ggplot(
         aes(xstart = start, xend = end, y = factor(transcript_id, levels = c("PB.4.557",
-                                                                             "PB.4.251", 
-                                                                             "PB.4.998", 
-                                                                             "PB.4.510",
-                                                                             "PB.4.188")))) +
+                                                                             "PB.4.251"
+                                                                             )))) +
       geom_range(fill = "white",
                  height = 0.25) +
       geom_range(data = CDS) +
@@ -168,7 +163,7 @@ plot_suppotive_data_per_gene <-
 
 # Plot APP
 APP_transcript_supportive_data_plot <-
-  plot_suppotive_data_per_gene(seqnames = "chr21", start = 25875000, end = 25920000, strand = "-", gene_id = "ENSG00000142192.21")
+  plot_suppotive_data_per_gene(seqnames = "chr21", start = 25879000, end = 25899500, strand = "-", gene_id = "ENSG00000142192.21")
 
 # Save data ---------------------------------------------------------------
 

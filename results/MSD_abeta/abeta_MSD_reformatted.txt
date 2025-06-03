@@ -107,39 +107,39 @@ Aβ MSD data – Aβ ratios	Aβ38/40	WT2	WT	Untreated	0.196555663	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	D4WT2	WT	Untreated	0.66648957	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	D4WT2	WT	Untreated	0.25057147	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	D4WT2	WT	Untreated	0.201631119	Ratio
-Aβ MSD data – individual analytes	Aβ38	EA WT2	WT	Untreated	9759.089	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ38	EA WT 2	WT	BSI	1626.599	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ38	EA WT 2	WT	GSI	1247.98	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ38	EA KO7	KO	Untreated	2406.155	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ38	EA KO7	KO	BSI	1567.496	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ38	EA KO7	KO	GSI	1399.055	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ40	EA WT2	WT	Untreated	43855.02	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ40	EA WT 2	WT	BSI	8077.89	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ40	EA WT 2	WT	GSI	2847.145	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ40	EA KO7	KO	Untreated	938.1527	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ38	EA WT2	WT	Untreated	4604.26315776335	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ38	EA WT2	WT	BSI	697.271968700385	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ38	EA WT2	WT	GSI	601.85817810666	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ38	EA KO7	KO	Untreated	734.555475690519	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ38	EA KO7	KO	BSI	409.024912329145	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ38	EA KO7	KO	GSI	378.122972972973	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ40	EA WT2	WT	Untreated	20690.4612581128	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ40	EA WT2	WT	BSI	3462.73805851667	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ40	EA WT2	WT	GSI	1373.08090073998	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ40	EA KO7	KO	Untreated	286.401001938297	Concentration (pg/ml)
 Aβ MSD data – individual analytes	Aβ40	EA KO7	KO	BSI	NA	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ40	EA KO7	KO	GSI	348.9841	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ42	EA WT2	WT	Untreated	4261.902	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ42	EA WT 2	WT	BSI	1043.935	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ42	EA WT 2	WT	GSI	583.356	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ42	EA KO7	KO	Untreated	118.1556	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ42	EA KO7	KO	BSI	190.2175	Concentration (pg/ml)
-Aβ MSD data – individual analytes	Aβ42	EA KO7	KO	GSI	34.24143	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ40	EA KO7	KO	GSI	94.320027027027	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ42	EA WT2	WT	Untreated	2010.73259610584	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ42	EA WT2	WT	BSI	447.502188704922	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ42	EA WT2	WT	GSI	281.332697116611	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ42	EA KO7	KO	Untreated	36.0707614278792	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ42	EA KO7	KO	BSI	49.6356585668922	Concentration (pg/ml)
+Aβ MSD data – individual analytes	Aβ42	EA KO7	KO	GSI	9.25444054054054	Concentration (pg/ml)
 Aβ MSD data – Aβ ratios	Aβ42/40	EA WT2	WT	Untreated	0.097182	Ratio
-Aβ MSD data – Aβ ratios	Aβ42/40	EA WT 2	WT	BSI	0.129234	Ratio
-Aβ MSD data – Aβ ratios	Aβ42/40	EA WT 2	WT	GSI	0.204892	Ratio
+Aβ MSD data – Aβ ratios	Aβ42/40	EA WT2	WT	BSI	0.129234	Ratio
+Aβ MSD data – Aβ ratios	Aβ42/40	EA WT2	WT	GSI	0.204892	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/40	EA KO7	KO	Untreated	0.125945	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/40	EA KO7	KO	BSI	NA	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/40	EA KO7	KO	GSI	0.098117	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	EA WT2	WT	Untreated	0.222531	Ratio
-Aβ MSD data – Aβ ratios	Aβ38/40	EA WT 2	WT	BSI	0.201364	Ratio
-Aβ MSD data – Aβ ratios	Aβ38/40	EA WT 2	WT	GSI	0.438327	Ratio
+Aβ MSD data – Aβ ratios	Aβ38/40	EA WT2	WT	BSI	0.201364	Ratio
+Aβ MSD data – Aβ ratios	Aβ38/40	EA WT2	WT	GSI	0.438327	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	EA KO7	KO	Untreated	2.56478	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	EA KO7	KO	BSI	NA	Ratio
 Aβ MSD data – Aβ ratios	Aβ38/40	EA KO7	KO	GSI	4.008937	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/38	EA WT2	WT	Untreated	0.436711	Ratio
-Aβ MSD data – Aβ ratios	Aβ42/38	EA WT 2	WT	BSI	0.64179	Ratio
-Aβ MSD data – Aβ ratios	Aβ42/38	EA WT 2	WT	GSI	0.46744	Ratio
+Aβ MSD data – Aβ ratios	Aβ42/38	EA WT2	WT	BSI	0.64179	Ratio
+Aβ MSD data – Aβ ratios	Aβ42/38	EA WT2	WT	GSI	0.46744	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/38	EA KO7	KO	Untreated	0.049106	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/38	EA KO7	KO	BSI	0.121351	Ratio
 Aβ MSD data – Aβ ratios	Aβ42/38	EA KO7	KO	GSI	0.024475	Ratio

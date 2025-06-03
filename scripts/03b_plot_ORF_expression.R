@@ -114,7 +114,7 @@ plot_ORF_expression <- function(data, ORFs, Samples) {
 
 # Get all the ORFs of interest from iPSC data
 ORF_of_interest <- Transcripts %>% 
-  dplyr::filter(Isoform_class == "Coding known (alternate 3/5 end)" | ORF_length == 191) %>% 
+  dplyr::filter(Isoform_class == "Coding known (alternate 3/5 end)") %>% 
   dplyr::select(ORF_length, ORF_seq) %>% 
   na.omit() %>% 
   unique() %>% 
@@ -131,8 +131,8 @@ expression_by_ORF_plot <- plot_ORF_expression(data = Transcripts,
 
 ggsave(
   plot = expression_by_ORF_plot, 
-  filename = "APP_expression_by_ORF_plot.svg", 
-  path = here::here("zIGNORE"), 
+  filename = "03b_APP_expression_by_ORF_plot.svg", 
+  path = here::here("results", "plots"), 
   width = 9, 
   height = 14, 
   dpi = 600, 

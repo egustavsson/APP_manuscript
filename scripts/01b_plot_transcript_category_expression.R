@@ -42,23 +42,21 @@ plot_transcripts_per_gene <-
   function(data, gene, gene_name, samples, labelling) {
     
     # fill colour to use
-    fill_colour <- c("Coding known (complete match)" = "#045a8d",
-                     "Coding known (alternate 3/5 end)" = "#74add1",
-                     "Coding novel" = "#4d9221",
-                     "NMD novel" = "#d53e4f",
-                     "Non-coding known" = "#b2abd2",
-                     "Non-coding novel" = "#d8daeb")
+    fill_colour <- c("full-splice_match" = "#045a8d",
+                     "incomplete-splice_match" = "#74add1",
+                     "novel_in_catalog" = "#4d9221",
+                     "novel_not_in_catalog" = "#d53e4f")
     
     
     ## Plot number of transcripts per category ##
     Transcripts_per_category <-
       data %>%
       dplyr::select(isoform,
-                    Isoform_class, 
+                    structural_category, 
                     starts_with("NFLR.")) %>%
       rename_with(~paste0("", gsub("NFLR.Clontech_5p..|_3p", "", .)),
                   starts_with('NFLR.Clontech_5p..')) %>%
-      pivot_longer(!c(Isoform_class, isoform), 
+      pivot_longer(!c(structural_category, isoform), 
                    names_to = "sample", 
                    values_to = "count") %>%
       dplyr::left_join(., 
@@ -67,9 +65,9 @@ plot_transcripts_per_gene <-
                                      Cell_category), 
                        by = c("sample" = "sample_id_matching")) %>% 
       subset(count != 0) %>% 
-      dplyr::select(Cell_category, Isoform_class, isoform) %>% 
+      dplyr::select(Cell_category, structural_category, isoform) %>% 
       unique() %>% 
-      dplyr::count(Cell_category, Isoform_class) %>% 
+      dplyr::count(Cell_category, structural_category) %>% 
       dplyr::mutate(source = ifelse(Cell_category %in% c("Total brain", "Cerebral cortex"), "Brain", "Cells"))
     
     
@@ -87,11 +85,13 @@ plot_transcripts_per_gene <-
                                        "Total brain",
                                        "Cerebral cortex")), 
                  y = n, 
-                 fill = Isoform_class)) +
+                 fill = structural_category)) +
       geom_col(show.legend = F, colour = "Black", width = 0.7) +
       scale_fill_manual(values = fill_colour) +
-      scale_x_discrete(labels = c("Coding known (alternate 3/5 end)" = "Coding known\n(alternate 3/5 end)",
-                                  "Coding known (complete match)" = "Coding known\n(complete match)")) +
+      scale_x_discrete(labels = c("full-splice_match" = "Full-splice match",
+                                  "incomplete-splice_match" = "Incomplete-splice match",
+                                  "novel_in_catalog" = "Novel in catalog",
+                                  "novel_not_in_catalog", "Novel not in catalog")) +
       labs(x = "", y = "No. unique transcripts") +
       ggtitle(paste0("Number of unique ", gene_name, " transcripts")) +
       facet_grid(~factor(source, levels = c("Cells", "Brain")), scale = "free_x", space = "free") +
@@ -109,12 +109,12 @@ plot_transcripts_per_gene <-
     ## Plot expression per category ##
     Expression_per_category <-
       data %>%
-      dplyr::select(Isoform_class, 
+      dplyr::select(structural_category, 
                     associated_gene, 
                     starts_with("NFLR.")) %>%
       rename_with(~paste0("", gsub("NFLR.Clontech_5p..|_3p", "", .)),
                   starts_with('NFLR.Clontech_5p..')) %>%
-      pivot_longer(!c(Isoform_class, associated_gene), 
+      pivot_longer(!c(structural_category, associated_gene), 
                    names_to = "sample", 
                    values_to = "count") %>% 
       dplyr::left_join(., 
@@ -122,13 +122,13 @@ plot_transcripts_per_gene <-
                                      sample_id_matching, 
                                      Cell_category), 
                        by = c("sample" = "sample_id_matching")) %>% 
-      aggregate(count ~ Isoform_class + associated_gene + Cell_category + sample,
+      aggregate(count ~ structural_category + associated_gene + Cell_category + sample,
                 data = .,
                 FUN = "sum")
     
     Expression_per_category_plot <-
       Expression_per_category %>%
-      group_by(Cell_category, Isoform_class) %>%
+      group_by(Cell_category, structural_category) %>%
       summarise(mean_count = mean(count), sd_count = sd(count)) %>% 
       dplyr::mutate(source = ifelse(Cell_category %in% c("Total brain", "Cerebral cortex"), "Brain", "Cells")) %>% 
       ggplot(
@@ -144,7 +144,7 @@ plot_transcripts_per_gene <-
                                   "Total brain",
                                   "Cerebral cortex")), 
             y = mean_count, 
-            fill = Isoform_class)) +
+            fill = structural_category)) +
       geom_col(position = "dodge", color = "black") +
       geom_errorbar(aes(ymin = mean_count - sd_count, ymax = mean_count + sd_count),
                     position = position_dodge(0.9), width = 0.2) +
@@ -174,7 +174,7 @@ plot_transcripts_per_gene <-
     
     return(plot)
     
-    }
+  }
 
 # Main --------------------------------------------------------------------
 

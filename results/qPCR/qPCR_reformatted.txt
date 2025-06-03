@@ -1,0 +1,25 @@
+Isoform	Genotype	Relative expression
+APP - full length	WT	1
+APP - full length	WT	2
+APP - full length	WT	1.0388591
+APP - full length	WT	0.96259444
+APP - full length	KO	0.15177436
+APP - full length	KO	0.10806715
+APP - full length	KO	0.18815584
+APP - full length	KO	0.12413656
+APP - full length	KO	0.0523742
+APP - full length	KO	0.11383373
+APP - full length	KO	0.13258597
+APP - full length	KO	0.10402484
+APP - C100	WT	1
+APP - C100	WT	1.98618499
+APP - C100	WT	0.84674531
+APP - C100	WT	1.18099266
+APP - C100	KO	2.80888975
+APP - C100	KO	1.75321144
+APP - C100	KO	2.78948733
+APP - C100	KO	1.9588406
+APP - C100	KO	0.83508792
+APP - C100	KO	1.40444488
+APP - C100	KO	1.40444488
+APP - C100	KO	0.80106988
